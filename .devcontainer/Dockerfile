@@ -11,5 +11,7 @@ ENV PYTHONUNBUFFERED 1
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends postgresql-client
+#Remove the broken yarn. list before updating
+RUN rm -f /etc/apt/sources.list.d/yarn.list \ 
+    && apt-get update \ 
+    && export DEBIAN_FRONTEND=noninteractive
